@@ -88,4 +88,8 @@ constand/index.js/navLinks
 https://youtu.be/DEeaT6FxEws?t=1167 = constant ke ander index.js banae se kya advantange milta ha 
 
 
-lesson 5 : github repo setup 
+lesson 5 : github repo setup (easy so not gonna describe it )
+
+
+Lesson 6: hero section (mac book oopning effect)
+https://youtu.be/DEeaT6FxEws?t=1482
