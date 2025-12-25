@@ -5,8 +5,7 @@ import React from 'react'
 const StudioLights = () => {
   return (
     <group name="lights">
-        {/* resolution 256 adds reflextion in metalic part .256 it is for balanced for performance and quality  */}
-        <Environment resolution={256}>
+        {/* resolution 256 adds reflection in metallic parts. 256 is balanced for performance and quality  */}        <Environment resolution={256}>
             <group>
                 
                 <Lightformer
@@ -29,8 +28,8 @@ const StudioLights = () => {
         
         {/* how to create a spot light  */}
          <spotLight
-            position={[-2,10,5]}
-            angle={0.15}
+            position={[-2,5,5]}
+            angle={0.5}
             decay={0}
             intensity={Math.PI * 0.2}
             />  
@@ -40,12 +39,12 @@ const StudioLights = () => {
             decay={0}
             intensity={Math.PI * 0.2}
             />  
-        {/*<spotLight
+        <spotLight
             position={[0,15,5]}
             angle={0.15}
             decay={0.1}
             intensity={Math.PI * 2}
-            />   */}
+            />  
         </group>
   )
 }

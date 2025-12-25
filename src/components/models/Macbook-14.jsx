@@ -8,14 +8,37 @@ Source: https://sketchfab.com/3d-models/macbook-pro-m3-16-inch-2024-8e34fc2b3031
 Title: macbook pro M3 16 inch 2024
 */
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useGLTF, useTexture } from '@react-three/drei'
+import  useMackbookStore  from '../../store';
 
+import {Color} from 'three';
+import { noChangeParts } from '../../constants';
 export default function MacbookModel14(props) {
-  /* path thik kiye  */
-  const { nodes, materials } = useGLTF('/models/macbook-14-transformed.glb');
 
+  // global state se color lene ki tayrai 
+  const {color} = useMackbookStore(); 
+
+  /* path thik kiye  */
+  const { nodes, materials,scene} = useGLTF('/models/macbook-14-transformed.glb');
   // texture apply kiye 
+  //bhai uper color tho le liye , abhi yahan pe scene ko bhi lena h jo gltf model mein h 
+  
+  //use effect use karenge color apaply karne ke liye sare meshes pe    
+  useEffect(() => {
+    scene.traverse((child) => {
+      if (child.isMesh) {
+        // change color only if the part name is NOT nochangePart (constants mein define kiye h ye apan)
+        if(!noChangeParts.includes(child.name)){
+        // material ke color ko global state se liye gaye color se set karna
+        child.material.color= new Color(color);
+        // bhai three ko import bhi karna padega 
+        
+      }
+    }
+    });
+  },[color,scene]);
+
   const texture = useTexture('/screen.png');
   return (
     <group {...props} dispose={null}>

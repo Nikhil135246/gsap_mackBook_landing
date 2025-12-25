@@ -21,8 +21,8 @@ const NavBar = () => {
             // ]https://youtu.be/DEeaT6FxEws?t=1188
             // upper jo phachank tha uske liye ek constant bana ke navLinks mein rakhd diye taki kabhi bhi utha ke use karo 
             navLinks.map((link) => (
-                <li key={link.lable}>
-                <a href={link.lable}>{link.lable}</a>
+                <li key={link.label}>
+                <a href={link.label}>{link.label}</a>
               </li>
                     //https://chatgpt.com/share/692efda0-af84-8000-bf8f-54db9b21fa9d
                     // .map() har object ko ek-ek karke lega.

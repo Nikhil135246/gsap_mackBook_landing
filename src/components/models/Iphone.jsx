@@ -11,7 +11,7 @@ Title: (FREE) iPhone 13 Pro 2021
 import React from 'react'
 import { useGLTF } from '@react-three/drei'
 
-export function Model(props) {
+export function Iphone13Pro2021(props) {
   const { nodes, materials } = useGLTF('/models/iphone-transformed.glb')
   return (
     <group {...props} dispose={null}>
