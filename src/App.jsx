@@ -6,6 +6,7 @@ import ProductViewer from './components/ProductViewer'
 // importing files for gsap animation 
 import gsap from 'gsap';
 import {ScrollTrigger,SplitText} from "gsap/all";
+import Showcase from './components/Showcase';
 gsap.registerPlugin(ScrollTrigger,SplitText);
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
       <NavBar/>
       <Hero/>
       <ProductViewer/>
+      <Showcase/>
     </main>
   )
 }

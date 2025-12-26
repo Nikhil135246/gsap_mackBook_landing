@@ -10,15 +10,20 @@ Title: macbook pro M3 16 inch 2024
 
 import React, { useEffect } from 'react'
 import { useGLTF, useTexture } from '@react-three/drei'
-import { Color } from 'three';
+import { Color, SRGBColorSpace } from 'three';
 import  useMackbookStore  from '../../store';
 import { noChangeParts } from '../../constants';
 
 export default function MacbookModel16(props) {
   const { nodes, materials, scene } = useGLTF('/models/macbook-16-transformed.glb')
-  const texture = useTexture('/screen.png');
-
   const {color} = useMackbookStore(); 
+ 
+  const texture = useTexture('/screen.png');
+// Set the texture color space to sRGB for accurate color rendering(specialy for imges like mac ka monitor/wallpaper)
+texture.colorSpace = SRGBColorSpace;
+// Notify Three.js to re-upload the texture with the new color space settings
+texture.needsUpdate = true;
+
 
   
   
@@ -55,7 +60,7 @@ export default function MacbookModel16(props) {
       <mesh geometry={nodes.Object_82.geometry} material={materials.gMtYExgrEUqPfln} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={nodes.Object_96.geometry} material={materials.PaletteMaterial003} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={nodes.Object_107.geometry} material={materials.JvMFZolVCdpPqjj} rotation={[Math.PI / 2, 0, 0]} />
-      <mesh geometry={nodes.Object_123.geometry} material={materials.sfCQkHOWyrsLmor} rotation={[Math.PI / 2, 0, 0]} >
+      <mesh geometry={nodes.Object_123.geometry} rotation={[Math.PI / 2, 0, 0]} >
       <meshBasicMaterial map={texture}/>
       </mesh>
       <mesh geometry={nodes.Object_127.geometry} material={materials.ZCDwChwkbBfITSW} rotation={[Math.PI / 2, 0, 0]} />
