@@ -12,7 +12,7 @@ import React, { useEffect } from 'react'
 import { useGLTF, useTexture } from '@react-three/drei'
 import  useMackbookStore  from '../../store';
 
-import {Color} from 'three';
+import {Color, SRGBColorSpace} from 'three';
 import { noChangeParts } from '../../constants';
 export default function MacbookModel14(props) {
 
@@ -24,6 +24,13 @@ export default function MacbookModel14(props) {
   // texture apply kiye 
   //bhai uper color tho le liye , abhi yahan pe scene ko bhi lena h jo gltf model mein h 
   
+  const texture = useTexture('/screen.png');
+
+  // Set the texture color space to sRGB for accurate color rendering(specialy for imges like mac ka monitor/wallpaper)
+  texture.colorSpace = SRGBColorSpace;
+  // Notify Three.js to re-upload the texture with the new color space settings
+  texture.needsUpdate = true;
+
   //use effect use karenge color apaply karne ke liye sare meshes pe    
   useEffect(() => {
     scene.traverse((child) => {
@@ -39,7 +46,6 @@ export default function MacbookModel14(props) {
     });
   },[color,scene]);
 
-  const texture = useTexture('/screen.png');
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.Object_10.geometry} material={materials.PaletteMaterial001} rotation={[Math.PI / 2, 0, 0]} />
@@ -59,7 +65,7 @@ export default function MacbookModel14(props) {
       <mesh geometry={nodes.Object_82.geometry} material={materials.gMtYExgrEUqPfln} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={nodes.Object_96.geometry} material={materials.PaletteMaterial003} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={nodes.Object_107.geometry} material={materials.JvMFZolVCdpPqjj} rotation={[Math.PI / 2, 0, 0]} />
-      <mesh geometry={nodes.Object_123.geometry} material={materials.sfCQkHOWyrsLmor} rotation={[Math.PI / 2, 0, 0]}>
+      <mesh geometry={nodes.Object_123.geometry}  rotation={[Math.PI / 2, 0, 0]}>
         {/* screen wale section me texture apply kiye */}
         <meshBasicMaterial map={texture}/>
       </mesh>
