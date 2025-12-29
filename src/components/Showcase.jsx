@@ -41,7 +41,7 @@ const Showcase = () => {
     return (
     // section ke ander video
     <section id = "showcase">
-        <div  className = " media">
+        <div  className = "media">
             <video src = "/videos/game.mp4" autoPlay loop muted playsInline />
             {/* autopla muted will play video when u are watching it  */}
             <div className="mask">
