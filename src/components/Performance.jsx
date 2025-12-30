@@ -68,12 +68,18 @@ const Performance = () => {
     //touchup#3: Add ref to section for ScrollTrigger
     <section id="performance" ref={sectionRef}>
       <h2>Next-level graphics performance. Game on.</h2>
-      <div className="wrapper">
-        {performanceImages.map(({ id, src }) => (
-          //touchup#4: Add className to target images for animation
-          <img key={id} className={id} src={src}  />
-        ))}
-      </div>
+      
+        <div className="wrapper">
+          {performanceImages.map((item, index) => (
+            <img
+              key={index}
+              src={item.src}
+              className={item.id}
+              alt={item.alt || `Performance Image #${index + 1}`}
+            />
+          ))}
+        </div>
+      
 
       <div className="content">
         <p>
